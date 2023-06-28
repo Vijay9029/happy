@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RentalX ║ SignUp</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" href="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+	<div class="Signupbox">
+		<img src="" class="avatar">
+		<h1>SIGN UP HERE </h1>
+		
+		{% for msg in messages %}
+      <p style="padding-bottom:20px;color:#008900;"><strong><i class="fa fa-check" style="color:#008900;font-size:21px;"></i></strong>&nbsp; {{msg}}</p>
+      
+    {% endfor %}
+		<form method="post">
+			{%csrf_token%}
+			<input type="text" name="fname" placeholder="First Name" required><br>
+			<input type="text" name="lname" placeholder="Last Name" required><br>
+			<input type="email" name="email" placeholder="E-mail" required><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="password" placeholder="Password" required id="password" title="Password must be 8 characters including 1 uppercase letter, 1 lowercase letter and numeric characters" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+			<span><i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i></span><br>
+			<input type="text" id="phone" placeholder="Contact No." pattern="[0-9]{10}" name="num">
+			<input type="submit" name="" value="Register">		
+			<p>Already have an account?<a href="{% url 'login' %}">&nbsp;Login</a></p>
+			
+		</form>
+	</div>
+	<script>
+		var state= false;
+		function toggle(){
+			if(state){
+				document.getElementById("password").setAttribute("type","password");
+				document.getElementById("eye").style.color='#7a797e';
+				state = false;
+			}
+			else{
+				document.getElementById("password").setAttribute("type","text");
+				document.getElementById("eye").style.color='#00394d';
+				state = true;
+			}
+		}
+	</script>	
+			
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% load  static %}
+<div id="sideNav">
+		<nav>
+			<ul>
+				<li>&nbsp;</li>
+				<li style="color:#fff;font-size:22px;font-weight:bolder;text-decoration:underline;text-transform:uppercase;">Welcome! {{request.user.first_name}}</li>
+				<li><a href="{%url 'user_home'%}">HOME</a></li>
+				<li><a href="{%url 'allcars' %}">CAR GALLERY</a></li>
+				<li><a href="{% url 'locations' %}">LOCATIONS</a></li>	
+				<li><a href="{% url 'feedback' %}">FEEDBACK</a></li>	
+				<li><a href="#">BECOME A RENTER!</a></li>
+				<li><a href="#">BECOME A DRIVER!</a></li>	
+				<li style="font-size:19px;font-weight:bolder;"><a href = "{% url 'Logout' %}">Logout ➨</a></li>
+				
+			</ul>
+			
+		</nav>
+
+	</div>
+	<div id="menuBtn">
+		<img src="media/banner.jpeg" id="menu">
+		
+	</div>
+	<script>
+		var menuBtn = document.getElementById("menuBtn")
+		var sideNav = document.getElementById("sideNav")
+		var menu = document.getElementById("menu")
+	
+		sideNav.style.right = "-250px";
+		
+		 menuBtn.onclick = function(){
+			 if(sideNav.style.right == "-250px"){
+				 sideNav.style.right = "0";
+				 menu.src = "{% static 'carapp/images/close.png' %}";
+			 }
+			 else{
+				 sideNav.style.right = "-250px";
+				 menu.src = "{% static 'carapp/images/menu.png' %}";
+			 }
+		 }
+	</script>
